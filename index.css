@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Leaflet Map Styles */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+}
+
+/* Fix Leaflet marker icon paths */
+.leaflet-default-icon-path {
+  background-image: url(https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png);
+}
+
+.leaflet-default-shadow-path {
+  background-image: url(https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+}
+
+@layer components {
+  /* Card hover animations */
+  .hover-card {
+    @apply transition-all duration-300 ease-in-out;
+  }
+  
+  .hover-card:hover {
+    @apply transform -translate-y-2 shadow-xl;
+  }
+  
+  /* Button animations */
+  .animate-button {
+    @apply transition-all duration-300 ease-in-out;
+  }
+  
+  .animate-button:hover {
+    @apply shadow-lg scale-105;
+  }
+  
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-red-500 to-primary;
+    text-shadow: 0 0 20px rgba(220, 38, 38, 0.2);
+  }
+  
+  /* Pulse animation */
+  .pulse-effect {
+    @apply relative;
+  }
+  
+  .pulse-effect::after {
+    content: '';
+    @apply absolute inset-0 rounded-md bg-primary/20 animate-pulse;
+    z-index: -1;
+  }
+  
+  /* Fade-in animation */
+  .fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* Glow effect */
+  .glow-effect {
+    @apply relative overflow-hidden;
+  }
+  
+  .glow-effect::after {
+    content: '';
+    @apply absolute inset-0 rounded-md bg-gradient-to-r from-primary/20 to-transparent animate-pulse;
+    z-index: -1;
+  }
+  
+  /* Heartbeat animation */
+  .animate-heartbeat {
+    animation: heartBeat 1.5s ease-in-out infinite;
+  }
+  
+  @keyframes heartBeat {
+    0% { transform: scale(1); }
+    14% { transform: scale(1.2); }
+    28% { transform: scale(1); }
+    42% { transform: scale(1.2); }
+    70% { transform: scale(1); }
+  }
+  
+  /* Slow pulse animation */
+  .animate-pulse-slow {
+    animation: pulseSlow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  @keyframes pulseSlow {
+    0%, 100% { 
+      opacity: 1;
+      box-shadow: 0 0 15px rgba(220, 38, 38, 0.4);
+    }
+    50% { 
+      opacity: 0.8;
+      box-shadow: 0 0 25px rgba(220, 38, 38, 0.6);
+    }
+  }
+  
+  /* Blood drop animation */
+  .animate-drop {
+    animation: dropFall 2s ease-in infinite;
+  }
+  
+  @keyframes dropFall {
+    0% { transform: translateY(-10px); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateY(10px); opacity: 0; }
+  }
+  
+  /* Blood-themed tab styles */
+  .blood-tabs [data-state="active"] {
+    @apply bg-primary text-primary-foreground;
+    box-shadow: 0 4px 10px rgba(220, 38, 38, 0.3);
+  }
+}
